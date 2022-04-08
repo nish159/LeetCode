@@ -1,20 +1,6 @@
-namespace practice
-{
-    using System;
-
-    public class Practice
-    {
-        static void Main(string[] args)
-        {
-            string[] strs = { "flower", "flow", "flight" };
-
-            LongestCommonPrefix(strs);
-            
-        }
-
-        public static string LongestCommonPrefix(string[] strs)
-        {
-            
+public class Solution {
+    public string LongestCommonPrefix(string[] strs) {
+        
             if (strs.Length == 0)
             {
                 return "";
@@ -24,13 +10,12 @@ namespace practice
             {
                 return strs[0];
             }
-            
 
             // var firstChar = strs[0][0];
             // string firstWord = strs[0];
             string prefix = "";
-
-            if (strs[0] == "")
+        
+            if(strs[0] == "")
             {
                 return "";
             }
@@ -43,11 +28,11 @@ namespace practice
                 {
                     // string word = strs[i];
 
-                    // Check if word has character number j
-                    if(strs[i].Length < j)
+                    if(strs[i].Length <= j)
                     {
                         return prefix;
                     }
+                    
                     // The current word does not have the same first letter as the other words
                     if (currentChar != strs[i][j])
                     {
@@ -55,10 +40,7 @@ namespace practice
                     } 
                 }
                 prefix += currentChar;
-
-                Console.WriteLine(prefix);
             }
             return prefix;
-        }
     }
 }
