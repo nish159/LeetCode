@@ -17,7 +17,6 @@ Example 2:
 
 Input: haystack = "aaaaa", needle = "bba"
 Output: -1
- 
 
 Constraints:
 
@@ -49,11 +48,14 @@ namespace practice
             {
                 return 0;
             }
-
-            int findNeedle = haystack.IndexOf(needle);
-
-            Console.WriteLine(findNeedle);
             
+            // Find the characters in the variable needle
+            // string.IndexOf will automatically return a -1 if the character is not found
+            int findNeedle = haystack.IndexOf(needle);
+        
+            //Console.WriteLine(findNeedle);
+            
+            // Because the method is an integer, we will need to return an integer
             return findNeedle;
         }
     }
