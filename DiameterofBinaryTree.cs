@@ -11,6 +11,7 @@
  *     }
  * }
  */
+
 public class Solution {
     // max length is 0
     int maxDiameter = 0;
