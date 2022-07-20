@@ -11,13 +11,13 @@
  *     }
  * }
  */
- 
 public class Solution {
-    int max = 0;
+    // max length is 0
+    int maxDiameter = 0;
     
     public int DiameterOfBinaryTree(TreeNode root) {
         Diameter(root);
-        return max;
+        return maxDiameter;
     }
     
     private int Diameter(TreeNode node){
@@ -27,8 +27,11 @@ public class Solution {
         
         int leftDepth = Diameter(node.left);
         int rightDepth = Diameter(node.right);
-        
-        max = Math.Max(max, leftDepth + rightDepth);
+        // checking if the diameter of the subtree with the current node as the root is greater than the max diameter previously found
+        int currentDiameter = leftDepth + rightDepth;
+        if(currentDiameter > maxDiameter) {
+            maxDiameter = currentDiameter;
+        }
         
         return 1 + Math.Max(leftDepth, rightDepth);
     }
