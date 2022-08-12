@@ -19,7 +19,7 @@ The tree consists only of the root, its left child, and its right child.
 -100 <= Node.val <= 100
 */
 
-/*
+/**
  * Definition for a binary tree node.
  * public class TreeNode {
  *     public int val;
