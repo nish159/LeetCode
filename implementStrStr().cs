@@ -19,7 +19,6 @@ Input: haystack = "aaaaa", needle = "bba"
 Output: -1
 
 Constraints:
-
 1 <= haystack.length, needle.length <= 104
 haystack and needle consist of only lowercase English characters.
 */
