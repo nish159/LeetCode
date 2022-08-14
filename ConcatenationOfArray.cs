@@ -25,8 +25,10 @@ n == nums.length
 
 public class Solution {
     public int[] GetConcatenation(int[] nums) {
+        // store your answer in an array
         int[] ans = new int[nums.Length * 2];
         
+        // iterate through the length of the array
         for(int i = 0; i < nums.Length; i++) {
             
             ans[i] = nums[i];
