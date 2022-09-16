@@ -40,3 +40,38 @@ public class Solution {
         return count;
     }
 }
+
+/*
+public class Solution {
+    public int[] SmallerNumbersThanCurrent(int[] nums) {
+        
+        // create a copy of the original array - we need the original to know the order of the output
+        int[] sorted = (int[]) nums.Clone();
+        
+        // sort the cloned array
+        Array.Sort(sorted);
+        
+        // create a dictionary/map to lookup counter by number
+        // key: number
+        // value: counter
+        Dictionary<int, int> counterMap = new Dictionary<int, int>();
+        
+        // construct the counter map using the sorted array
+        for(int i = 0; i < sorted.Length; i++) {
+            // if map does not contain the current number
+            if(!counterMap.ContainsKey(sorted[i])) {
+                // add the number to the map
+                counterMap.Add(sorted[i], i);
+            }
+        }
+        
+        // create the result array using the original array and the counter map
+        int[] counterArray = new int[nums.Length];
+        for(int i = 0; i < nums.Length; i++) {
+            int counter = counterMap[nums[i]];
+            counterArray[i] = counter;
+        }
+        return counterArray;
+    }
+}
+*/
