@@ -44,3 +44,51 @@ public class Solution {
 	return x == reverseNum || x == reverseNum / 10;
     }
 }
+
+/*
+// Time complexity O(n)
+int x = 400;
+
+IsPalindrome(x);
+
+bool IsPalindrome(int x)
+{
+	// base case
+	if (x == 0)
+	{
+		return true;
+	}
+
+	// if number is negative
+	if (x < 0)
+	{
+		return false;
+	}
+
+	// store the last digit
+	int lastDigit = 0;
+	// store the reverse number
+	int reverse = 0;
+	// making a copy of x so we don't overwrite the conditional statement
+	int number = x;
+
+	// loop through the numbers
+	// when we reach 0 we are done
+	while (number != 0)
+	{
+		lastDigit = number % 10;
+		number = number / 10;
+		reverse = reverse * 10 + lastDigit;
+	}
+
+	// if the reverse number is equal to the current number return true
+	// return false if it does not equal
+	if (reverse == x)
+	{
+        Console.WriteLine($"{x} is a palindrome");
+        return true;
+    }
+    Console.WriteLine($"{x} is not a palindrome");
+    return false;
+}
+*/
