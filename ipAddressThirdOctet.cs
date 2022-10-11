@@ -1,3 +1,5 @@
+// Return the third octet and group the IP address  
+
 string[] ipaddress = { "192.168.1.2", "192.168.2.1", "192.168.1.1" };
 
 SortIp(ipaddressAray);
