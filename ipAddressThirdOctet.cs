@@ -43,5 +43,5 @@ string GetThirdOctet(string ipaddress)
 {
     string[] octets = ipaddress.Split('.');
     // {"192", "168", "1", "2"};
-    return octets;
+    return octets[2];
 }
