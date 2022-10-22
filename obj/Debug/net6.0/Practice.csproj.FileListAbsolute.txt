@@ -1,0 +1,5 @@
+/Users/nish/LeetCode/obj/Debug/net6.0/Practice.csproj.AssemblyReference.cache
+/Users/nish/LeetCode/obj/Debug/net6.0/Practice.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nish/LeetCode/obj/Debug/net6.0/Practice.AssemblyInfoInputs.cache
+/Users/nish/LeetCode/obj/Debug/net6.0/Practice.AssemblyInfo.cs
+/Users/nish/LeetCode/obj/Debug/net6.0/Practice.csproj.CoreCompileInputs.cache
