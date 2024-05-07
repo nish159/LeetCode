@@ -34,22 +34,30 @@ The number of nodes in the tree is in the range [0, 100].
 
 
 public class Solution {
+    // Public method to perform inorder traversal and return the result as a list
     public IList<int> InorderTraversal(TreeNode root) {
+        // Initialize a list to store the inorder traversal result
         List<int> list = new List<int>();
+        // Call the private helper method to perform the actual traversal
         InorderTraversal(root, list);
+        // Return the list containing the inorder traversal result
         return list;
     }
     
+    // Private helper method to perform inorder traversal recursively
     private void InorderTraversal(TreeNode node, List<int> list) {
+        // Base case: if the node is null, return
         if(node == null){
             return;
         }
+        // Recursively traverse the left subtree
         InorderTraversal(node.left, list);
         
+        // Add the current node's value to the list (inorder position)
         list.Add(node.val);
         
+        // Recursively traverse the right subtree
         InorderTraversal(node.right, list);
-        
-        
     }
 }
+
