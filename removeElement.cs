@@ -40,37 +40,44 @@ Constraints:
 namespace practice
 {
     using System;
- 
+
     public class Practice
     {
         static void Main(string[] args)
         {
-            //int[] nums = { 3, 2, 2, 3 };
+            // Sample array with elements
             int[] nums = { 0, 1, 2, 2, 3, 0, 4, 2 };
 
+            // Call the RemoveElement method with value 2
             RemoveElement(nums, 2);
         }
 
+        // Method to remove all instances of a specified value from an array
         public static int RemoveElement(int[] nums, int val)
         {
             if (nums.Length == 0)
             {
+                // If the array is empty, return the length (which is 0)
                 return nums.Length;
             }
 
-            int index = 0;
+            int index = 0;  // Index for the modified array
 
+            // Iterate through the array
             for (int i = 0; i < nums.Length; i++)
             {
-
-                if(nums[i] != val)
+                // If the current element is not equal to the specified value
+                if (nums[i] != val)
                 {
-                    nums[index++] = nums[i];
+                    nums[index++] = nums[i];  // Copy the element to the modified array
                 }
 
+                // Output the current index for visualization
                 Console.Write(index + " ");
             }
-            return index;
+
+            return index;  // Return the length of the modified array
         }
     }
 }
+
