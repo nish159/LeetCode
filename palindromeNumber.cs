@@ -24,6 +24,17 @@ Constraints:
 Follow up: Could you solve it without converting the integer to a string?
 */
 
+public bool IsPalindrome(int x) {
+    if (x < 0 || (x % 10 == 0 && x != 0)) return false; // Negative numbers and multiples of 10 (excluding 0) are not palindromes
+    int reversed = 0; // Initialize variable to store reversed number
+    while (x > reversed) { // Reverse half of the number
+        reversed = reversed * 10 + x % 10; // Add last digit of x to reversed
+        x /= 10; // Remove last digit from x
+    }
+    return x == reversed || x == reversed / 10; // Check if x is equal to reversed or half of reversed (for odd digit length)
+}
+
+
 public class Solution {
     public bool IsPalindrome(int x) {
         
