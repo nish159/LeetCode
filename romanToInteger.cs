@@ -39,43 +39,40 @@ Constraints:
 public class Solution {
     public int RomanToInt(string s) {
         
+        // Create a dictionary to map Roman numerals to integers
         Dictionary<char, int> map = new Dictionary<char, int>();
         
-        map.Add('I',1);
-        map.Add('V',5);
-        map.Add('X',10);
-        map.Add('L',50);
-        map.Add('C',100);
-        map.Add('D',500);
-        map.Add('M',1000);
+        // Populate the dictionary with Roman numeral values
+        map.Add('I', 1);
+        map.Add('V', 5);
+        map.Add('X', 10);
+        map.Add('L', 50);
+        map.Add('C', 100);
+        map.Add('D', 500);
+        map.Add('M', 1000);
         
-        int number = 0;
+        int number = 0;  // Initialize the result variable
         
-        for (int i = 0; i < s.Length; i++){
-        
-            if( i == s.Length - 1)
-            {
+        // Iterate through the input Roman numeral string
+        for (int i = 0; i < s.Length; i++) {
+            if (i == s.Length - 1) {
                 // We are processing the last character in the string
-                number = number += map[s[i]];
-            }
-            else
-            {
-                // We are not processing the last character,
-                // we need to determine if the current value should
-                // be added or substracted from the number
-                int currentValue = map[s[i]];
-                int nextValue = map[s[i + 1]];
-
-                if (currentValue < nextValue){
-
-                    number = number - currentValue;
-                }
-                else{
-                    number = number + currentValue;
+                number += map[s[i]];  // Add the value of the last character
+            } else {
+                // We are not processing the last character
+                int currentValue = map[s[i]];  // Get the value of the current character
+                int nextValue = map[s[i + 1]];  // Get the value of the next character
+                
+                if (currentValue < nextValue) {
+                    // If the current value is less than the next value, subtract the current value
+                    number -= currentValue;
+                } else {
+                    // Otherwise, add the current value
+                    number += currentValue;
                 }
             }
-            
         }
-        return number;
+        return number;  // Return the resulting integer
     }
 }
+
