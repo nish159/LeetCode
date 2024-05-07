@@ -31,23 +31,32 @@ The number of nodes in the tree is in the range [0, 100].
  *     }
  * }
  */
+
 public class Solution {
+    // Public method to perform preorder traversal and return the result as a list
     public IList<int> PreorderTraversal(TreeNode root) {
+        // Initialize a list to store the preorder traversal result
         List<int> list = new List<int>();
+        // Call the private helper method to perform the actual traversal
         PreorderTraversal(root, list);
+        // Return the list containing the preorder traversal result
         return list;
     }
+    
+    // Private helper method to perform preorder traversal recursively
     private void PreorderTraversal(TreeNode node, List<int> list) {
+        // Base case: if the node is null, return
         if(node == null){
             return;
         }
         
+        // Add the current node's value to the list (preorder position)
         list.Add(node.val);
         
+        // Recursively traverse the left subtree
         PreorderTraversal(node.left, list);
         
+        // Recursively traverse the right subtree
         PreorderTraversal(node.right, list);
-        
-        
     }
 }
