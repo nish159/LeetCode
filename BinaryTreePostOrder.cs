@@ -31,22 +31,32 @@ The number of the nodes in the tree is in the range [0, 100].
  *     }
  * }
  */
+
 public class Solution {
+    // Public method to perform postorder traversal and return the result as a list
     public IList<int> PostorderTraversal(TreeNode root) {
+        // Initialize a list to store the postorder traversal result
         List<int> list = new List<int>();
+        // Call the private helper method to perform the actual traversal
         PostOrderTraversal(root, list);
+        // Return the list containing the postorder traversal result
         return list;
     }
     
-    private void PostOrderTraversal(TreeNode node, List<int> list){
+    // Private helper method to perform postorder traversal recursively
+    private void PostOrderTraversal(TreeNode node, List<int> list) {
+        // Base case: if the node is null, return
         if(node == null){
             return;
         }
         
+        // Recursively traverse the left subtree
         PostOrderTraversal(node.left, list);
         
+        // Recursively traverse the right subtree
         PostOrderTraversal(node.right, list);
         
+        // Add the current node's value to the list (postorder position)
         list.Add(node.val);
     }
 }
