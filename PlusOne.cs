@@ -31,26 +31,26 @@ digits does not contain any leading 0's
 
 int[] PlusOne(int[] digits)
 {
-	// loop will start at the end of the array instead of the beginning
-	for (int i = digits.Length - 1; i >= 0; i--)
-	{
-		// if the index in digits equals 9 then the new value will 
-		// be set to 0 because 9 + 1 = 10
-		if (digits[i] == 9)
-		{
-			digits[i] = 0;
-		}
-		else
-		{
-			digits[i]++;
-			return digits;
-		}
-	}
-	
-	// if all the numbers in the array are [9,9,9] after loop it will
-	// become [0,0,0] so a new array is created and starts at 1
-	int[] newArr = new int[digits.Length + 1];
-	newArr[0] = 1;
+    // Loop through the array starting from the end
+    for (int i = digits.Length - 1; i >= 0; i--)
+    {
+        // If the current digit is 9, set it to 0 and continue to the next digit
+        if (digits[i] == 9)
+        {
+            digits[i] = 0;
+        }
+        else
+        {
+            // If the current digit is not 9, increment it by 1 and return the array
+            digits[i]++;
+            return digits;
+        }
+    }
 
-	return newArr;
+    // If all digits are 9, create a new array with one more digit and set the first digit to 1
+    int[] newArr = new int[digits.Length + 1];
+    newArr[0] = 1;
+
+    return newArr;  // Return the new array
 }
+
