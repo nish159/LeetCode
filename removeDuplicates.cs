@@ -78,3 +78,97 @@ namespace practice
         }
     }
 }
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+
+public class ListNode
+{
+    public int val;
+    public ListNode next;
+    public ListNode(int val = 0, ListNode next = null)
+    {
+        this.val = val;
+        this.next = next;
+    }
+}
+
+public class Solution
+{
+    public ListNode RemoveDuplicates(ListNode head)
+    {
+        // Check if the list is empty or has only one node
+        if (head == null || head.next == null)
+        {
+            return head;
+        }
+
+        // Create a HashSet to track seen values
+        HashSet<int> seenValues = new HashSet<int>();
+        ListNode current = head;
+        ListNode previous = null;
+
+        while (current != null)
+        {
+            // If the current node's value is already in the set, it's a duplicate
+            if (seenValues.Contains(current.val))
+            {
+                // Skip the duplicate node by updating the pointers
+                previous.next = current.next;
+            }
+            else
+            {
+                // Add the value to the set since it's not a duplicate
+                seenValues.Add(current.val);
+                // Move to the next node
+                previous = current;
+            }
+
+            // Move to the next node in the list
+            current = current.next;
+        }
+
+        return head;
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        // Create a sample linked list: 1 -> 2 -> 2 -> 3 -> 4 -> 4 -> 5
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(2);
+        head.next.next.next = new ListNode(3);
+        head.next.next.next.next = new ListNode(4);
+        head.next.next.next.next.next = new ListNode(4);
+        head.next.next.next.next.next.next = new ListNode(5);
+
+        // Print the original list
+        PrintLinkedList(head);
+
+        Solution solution = new Solution();
+        ListNode result = solution.RemoveDuplicates(head);
+
+        // Print the list after removing duplicates
+        PrintLinkedList(result);
+    }
+
+    // Helper method to print the linked list
+    public static void PrintLinkedList(ListNode head)
+    {
+        ListNode current = head;
+        while (current != null)
+        {
+            Console.Write(current.val + " ");
+            current = current.next;
+        }
+        Console.WriteLine();
+    }
+}
+
