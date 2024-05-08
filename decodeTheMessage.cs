@@ -32,29 +32,38 @@ message consists of lowercase English letters and ' '.
 
 public class Solution {
     public string DecodeMessage(string key, string message) {
+        // Create a dictionary to map characters from the key to letters 'a' onwards
         Dictionary<char, char> dictionary = new Dictionary<char, char>();
         
+        // Initialize a letter variable starting from 'a'
         char letter = 'a';
+        // Initialize the result string
         string result = "";
         
+        // Populate the dictionary with mappings from key characters to letters
         for (int i = 0; i < key.Length; i++) {
+            // Check if the character is not already in the dictionary and is not a space
             if (!dictionary.ContainsKey(key[i]) && key[i] != ' ') {
                 dictionary.Add(key[i], letter);
                 letter++;
             }
         }
         
+        // Decode the message using the dictionary
         for (int i = 0; i < message.Length; i++) {
+            // If the character exists in the dictionary, append its mapped value to the result
             if (dictionary.ContainsKey(message[i])) {
                 char value = dictionary[message[i]];
-                result+=value;
+                result += value;
             }
             
+            // If the character is a space, append a space to the result
             if (message[i] == ' ') {
                 result += ' ';
             }
         }
         
+        // Uncomment the following block to print the dictionary entries
         /*
         foreach (KeyValuePair<char, char> entry in dictionary) {
             Console.WriteLine(entry.Key + ":" + entry.Value);
@@ -62,6 +71,5 @@ public class Solution {
         */
         
         return result;
-
     }
 }
