@@ -25,22 +25,26 @@ Constraints:
 
 public class Solution {
     public int[] SmallerNumbersThanCurrent(int[] nums) {
-        // you need a new array to store your answer
+        // Create a new array to store the count of smaller numbers than each element
         int[] count = new int[nums.Length];
         
-        // the first for loop will iterate through nums
+        // Iterate through the nums array using the first for loop
         for(int i = 0; i < nums.Length; i++) {
-            // the second for loop will compare the numbers
-            // in the first array
+            // Initialize the count for the current element to 0
+            count[i] = 0;
+            // Compare each number in nums with the current number
             for(int j = 0; j < nums.Length; j++) {
+                // If nums[j] is smaller than nums[i], increment the count for nums[i]
                 if(nums[j] < nums[i]) {
                     count[i]++;
                 }
             }
         }
-        return count;
+        
+        return count; // Return the count array containing the number of smaller numbers than each element
     }
 }
+
 
 /*
 public class Solution {
