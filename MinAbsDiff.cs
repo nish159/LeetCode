@@ -26,32 +26,36 @@ Constraints:
 
 public class Solution {
     public IList<IList<int>> MinimumAbsDifference(int[] arr) {
-        
+        // Sort the input array in ascending order
         Array.Sort(arr);
         
+        // Initialize a list to store pairs with minimum absolute difference
         IList<IList<int>> ans = new List<IList<int>>();
         
+        // Initialize the minimum difference to the maximum possible value
         int minDiff = int.MaxValue;
         
+        // Iterate through the sorted array to find the minimum absolute difference
         for(int i = 0; i < arr.Length - 1; i++) {
-            if (arr[i] < arr[i + 1]) {
-                int diff = arr[i + 1] - arr[i];
-                minDiff = Math.Min(diff, minDiff);
-            }
-            else if (arr[i] > arr[i + 1]) {
-                int diff = arr[i] - arr[i + 1];
-                minDiff = Math.Min(diff, minDiff);
+            // Calculate the absolute difference between adjacent elements
+            int diff = Math.Abs(arr[i + 1] - arr[i]);
+            
+            // Update the minimum difference if the current difference is smaller
+            minDiff = Math.Min(diff, minDiff);
+        }
+        
+        // Iterate through the array again to find pairs with the minimum absolute difference
+        for(int i = 0; i < arr.Length - 1; i++) {
+            int diff = Math.Abs(arr[i + 1] - arr[i]);
+            
+            // If the difference equals the minimum difference, add the pair to the result list
+            if (minDiff == diff) {
+                List<int> pair = new List<int>{arr[i], arr[i + 1]};
+                ans.Add(pair);
             }
         }
-        for(int i = 0; i < arr.Length - 1; i++) {
-                int diff = arr[i + 1] - arr[i];
-                
-                if (minDiff == diff) {
-                    List<int> pair = new List<int>{arr[i], arr[i + 1]};
- 
-                    ans.Add(pair);
-                }
-        }
-        return ans;
+        
+        return ans; // Return the list of pairs with minimum absolute difference
     }
 }
+
