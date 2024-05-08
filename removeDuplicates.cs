@@ -37,37 +37,43 @@ Constraints:
 namespace practice
 {
     using System;
- 
+
     public class Practice
     {
         static void Main(string[] args)
         {
-            int[] nums = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
-            //int[] nums = { 1, 1, 2 }; 
+            // Example arrays for testing
+            int[] nums1 = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
+            int[] nums2 = { 1, 1, 2 };
 
-            RemoveDuplicates(nums);
+            // Call the RemoveDuplicates method with the arrays
+            RemoveDuplicates(nums1);
+            RemoveDuplicates(nums2);
         }
 
         public static int RemoveDuplicates(int[] nums)
         {
+            // Check if the array is empty
             if (nums.Length == 0)
             {
                 return nums.Length;
             }
 
-            // Where the array starts 
+            // Initialize the index where the array starts after removing duplicates
             int index = 1;
 
-            // nums.length - 1 is to make sure the array stays inbounds
+            // Loop through the array to check for duplicates
             for (int i = 0; i < nums.Length - 1; i++)
             {
-                // If i is not equal to the next index in the array
+                // If the current element is not equal to the next element, it's not a duplicate
                 if (nums[i] != nums[i + 1])
                 {
-                    // Increment the index; nums of i + 1 will be replaced by the new index
-                   nums[index++] = nums[i + 1];
+                    // Increment the index and replace the element at that index with the non-duplicate value
+                    nums[index++] = nums[i + 1];
                 }
             }
+
+            // Return the new length of the array without duplicates
             return index;
         }
     }
