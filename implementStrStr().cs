@@ -26,35 +26,42 @@ haystack and needle consist of only lowercase English characters.
 namespace practice
 {
     using System;
-    using System.Globalization;
 
     public class Practice
     {
         static void Main(string[] args)
         {
-            //string haystack = "hello";
-            //string needle = "ll";
+            // Uncomment the desired test case and call the StrStr method
+            
+            // Test Case 1
+            // string haystack = "hello";
+            // string needle = "ll";
 
+            // Test Case 2
             string haystack = "aaaaa";
             string needle = "bba";
 
+            // Call the StrStr method to find the needle in the haystack
             StrStr(haystack, needle);
         }
 
         public static int StrStr(string haystack, string needle)
         {
+            // Check if the haystack is empty
             if (haystack.Length == 0)
             {
+                // If the haystack is empty, return 0
                 return 0;
             }
             
-            // Find the characters in the variable needle
-            // string.IndexOf will automatically return a -1 if the character is not found
+            // Use IndexOf to find the first occurrence of the needle in the haystack
             int findNeedle = haystack.IndexOf(needle);
         
-            //Console.WriteLine(findNeedle);
+            // Uncomment the following line to print the result to the console
+            // Console.WriteLine(findNeedle);
             
-            // Because the method is an integer, we will need to return an integer
+            // Return the index of the first occurrence of the needle in the haystack
+            // If the needle is not found, IndexOf returns -1
             return findNeedle;
         }
     }
