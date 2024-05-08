@@ -24,35 +24,41 @@ int[] weight = { 100, 200, 150, 1000 };
 
 int MaxNumberOfApples(int[] weight)
 {
-    // sort the array
+    // Sort the array in ascending order
     Array.Sort(weight);
 
-    // max weight
+    // Maximum weight the bag can hold
     int max = 5000;
 
-    // sum of apples 
+    // Sum of weights of apples added to the bag
     int sum = 0;
 
-    // how many apples can fit
+    // Number of apples that can fit into the bag
     int count = 0;
 
-    // loop through array
+    // Loop through the sorted array of apple weights
     for (int i = 0; i < weight.Length; i++)
     {
-        // add weight
-        sum = sum + weight[i];
+        // Add the weight of the current apple to the sum
+        sum += weight[i];
 
-        // if sum is less than max weight
+        // If the current sum is less than or equal to the maximum weight allowed
         if (sum <= max)
         {
+            // Increment the count of apples that can fit
             count++;
         }
-        // if sum is greater than max weight
+        // If the current sum exceeds the maximum weight allowed
         else if (sum > max)
         {
+            // Break the loop as no more apples can be added to the bag
             break;
         }
     }
+
+    return count; // Return the maximum number of apples that can fit into the bag
+}
+
 
     return count;
 }
