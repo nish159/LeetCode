@@ -22,18 +22,21 @@ All the characters of jewels are unique
 public class Solution {
     public int NumsJewelsInStones(string jewels, string stones) 
     {
-        // need a variable to store the count
+        // Initialize a variable to store the count of jewels found in stones
         int count = 0;
 
-        // loop through stones to find where the jewels are located
+        // Loop through each stone in the stones string
         for (int i = 0; i < stones.Length; i++)
         {
-            // if jewels contains any of the stones
+            // Check if the jewels string contains the current stone
             if (jewels.Contains(stones[i])) 
             {
+                // Increment the count if the stone is a jewel
                 count++;
             }
         }
+        
+        // Return the total count of jewels found in stones
         return count;
     }
 }
