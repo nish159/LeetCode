@@ -29,28 +29,29 @@ Constraints:
 int[] nums = { 1, 2, 5, 2, 3 };
 int target = 2;
 
-TargetIndices(nums, target);
-
 IList<int> TargetIndices(int[] nums, int target)
 {
-    // sort the array
+    // Sort the array in ascending order
     Array.Sort(nums);
 
-    // output answer into an array
+    // Initialize a list to store the indices of target elements
     List<int> answer = new List<int>();
 
-    // loop through the array
+    // Loop through the sorted array
     for (int i = 0; i < nums.Length; i++)
     {
+        // If the current element is equal to the target, add its index to the answer list
         if (nums[i] == target)
         {
             answer.Add(i);
         }
-        // if target is greater than nums program will break
+        // If the current element is greater than the target, stop the loop
         else if (nums[i] > target)
         {
             break;
         }
     }
-    return answer;
+
+    return answer; // Return the list of indices of target elements
 }
+
