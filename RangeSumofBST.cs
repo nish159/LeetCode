@@ -33,31 +33,36 @@ All Node.val are unique.
  *     }
  * }
  */
+
 public class Solution {
     public int RangeSumBST(TreeNode root, int low, int high) {
+        // Call the private helper method RangeSum to calculate the sum within the range [low, high]
         return RangeSum(root, low, high);
     }
     
+    // Private helper method to calculate the sum of values within the range [low, high]
     private int RangeSum(TreeNode node, int low, int high) {
+        // Base case: if the node is null, return 0 (sum is 0)
         if(node == null){
             return 0;
         }
         
-        // 1. node.val is within the range; look at both subtrees; node.val should be included because it is within range
+        // Check if node.val is within the range [low, high]
         if(node.val >= low && node.val <= high){
+            // If within range, recursively calculate sum for left and right subtrees and add node.val
             return RangeSum(node.left, low, high) + RangeSum(node.right, low, high) + node.val;
         }
         
-        // 2. node.val is greater than high; look at the left subtree
+        // If node.val is greater than high, search in the left subtree only
         if(node.val > high){
             return RangeSum(node.left, low, high);
         }
         
-        // 3. node.val is less than the low; look at the right subtree
+        // If node.val is less than low, search in the right subtree only
         if(node.val < low){
             return RangeSum(node.right, low, high);
         }
         
-        return 0;
+        return 0; // Default case if none of the conditions match (should not reach here)
     }
 }
