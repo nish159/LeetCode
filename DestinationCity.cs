@@ -33,42 +33,40 @@ All strings consist of lowercase and uppercase English letters and the space cha
 
 public class Solution {
     public string DestCity(IList<IList<string>> paths) {
-        // create dictionary to store key/values
-        // key = city
-        // value = destination
+        // Create a dictionary to store city-destination pairs
         Dictionary<string, int> dictionary = new Dictionary<string, int>();
         
-        // loop through the array
+        // Loop through the list of paths
         for (int i = 0; i < paths.Count; i++) {
-            // variable for the current city
+            // Get the current city and destination from the path
             var currentCity = paths[i][0];
             var destCity = paths[i][1];
             
-            // if the current city is not in the dictionary add the city 
-            // its the first time we are seeing the city so the value will be 1
+            // If the current city is not in the dictionary, add it with a value of 1
             if (!dictionary.ContainsKey(currentCity)) {
                 dictionary.Add(currentCity, 1);
             }
             else {
-            // increment the value by 1
+                // If the city is already in the dictionary, increment its value by 1
                 dictionary[currentCity]++;
             }
             
-            // if the dictionary does not contain the destination add the destination 
-            // this is the count of the destination so it will be set a value of 0
+            // If the destination city is not in the dictionary, add it with a value of 0
             if (!dictionary.ContainsKey(destCity)) {
                 dictionary.Add(destCity, 0);
             }
         }
         
-        // loop through the dictionary
+        // Loop through the dictionary to find the destination city with a value of 0
         foreach (KeyValuePair<string, int> entry in dictionary) {
-        // if the key value is eq to 0 then return the key
+            // If the value is 0, return the key (destination city)
             if (entry.Value == 0) {
                 return entry.Key;
             }
         }
-        // return an empty stirng 
+        
+        // If no destination city with a value of 0 is found, return an empty string
         return "";
     }
 }
+
