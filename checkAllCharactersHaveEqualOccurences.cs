@@ -21,32 +21,36 @@ s consists of lowercase English letters.
 
 public class Solution {
     public bool AreOccurrencesEqual(string s) {
-        // need a dictionary to store key = char and value = count
+        // Create a dictionary to store character occurrences
         Dictionary<char, int> result = new Dictionary<char, int>();
         
+        // Iterate through the input string
         for (int i = 0; i < s.Length; i++) {
-            // variable for the current character 
+            // Get the current character
             var currentChar = s[i];
-            // if dictionary contains the key increment value by 1
+            
+            // Check if the dictionary already contains the character
             if (result.ContainsKey(currentChar)) {
+                // If yes, increment its count by 1
                 result[currentChar]++;
             }
             else {
-                // if it does not add key to the dictionary with a value of 1
+                // If no, add the character to the dictionary with a count of 1
                 result.Add(currentChar, 1);
             }
         }
         
-        // count the first value in the dictionary
+        // Get the count of occurrences of the first character in the dictionary
         int count = result.First().Value;
         
-        // loop through the dictionary
+        // Check if all characters in the dictionary have the same count
         foreach (KeyValuePair<char, int> entry in result) {
-            // if the count is != to the value in the dictionary return false
+            // If any character has a different count, return false
             if (count != entry.Value) {
                 return false;
             }
         }
+        // All characters have the same count, so return true
         return true;
     }
 }
