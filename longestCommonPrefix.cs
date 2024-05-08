@@ -19,47 +19,53 @@ Constraints:
 
 public class Solution {
     public string LongestCommonPrefix(string[] strs) {
-        
-            if (strs.Length == 0)
-            {
-                return "";
-            }
+        // Check if the input array is empty
+        if (strs.Length == 0)
+        {
+            return "";
+        }
 
-            if (strs.Length == 1)
-            {
-                return strs[0];
-            }
+        // Check if there is only one string in the array
+        if (strs.Length == 1)
+        {
+            return strs[0];
+        }
 
-            // var firstChar = strs[0][0];
-            // string firstWord = strs[0];
-            string prefix = "";
-        
-            if(strs[0] == "")
-            {
-                return "";
-            }
+        // Initialize the prefix string
+        string prefix = "";
 
-            for (int j = 0; j < strs[0].Length; j++) // Go through all the characters in the first word
-            {
-                var currentChar = strs[0][j];
+        // Check if the first string is empty
+        if(strs[0] == "")
+        {
+            return "";
+        }
 
-                for (int i = 0; i < strs.Length; i++) // compare each character in the first word with the same character in the other words
+        // Iterate through each character in the first string
+        for (int j = 0; j < strs[0].Length; j++)
+        {
+            var currentChar = strs[0][j];
+
+            // Compare the current character in the first string with the corresponding characters in other strings
+            for (int i = 0; i < strs.Length; i++)
+            {
+                // Check if the current word's length is less than or equal to the current index
+                if(strs[i].Length <= j)
                 {
-                    // string word = strs[i];
-
-                    if(strs[i].Length <= j)
-                    {
-                        return prefix;
-                    }
-                    
-                    // The current word does not have the same first letter as the other words
-                    if (currentChar != strs[i][j])
-                    {
-                        return prefix;
-                    } 
+                    return prefix;
                 }
-                prefix += currentChar;
+
+                // Check if the current character in other strings is different from the current character in the first string
+                if (currentChar != strs[i][j])
+                {
+                    return prefix;
+                } 
             }
-            return prefix;
+
+            // Add the current character to the prefix string
+            prefix += currentChar;
+        }
+        
+        // Return the longest common prefix found
+        return prefix;
     }
 }
