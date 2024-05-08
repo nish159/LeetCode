@@ -30,26 +30,26 @@ The number of nodes in the tree is in the range [1, 1000].
  *     }
  * }
  */
+
 public class Solution {
     public int SumOfLeftLeaves(TreeNode root) {
+        // Call the private helper method to calculate the sum of left leaves
         return SumLeft(root);
     }
     
     private int SumLeft(TreeNode node) {
+        // Base case: if the node is null, return 0
         if(node == null) {
             return 0;
         }
         
-        /*  if the left node is not null
-            and the left child of the left node is null
-            and the right child of the left node is null
-            return the value of the left node and the recursive 
-            value of the right node left value 
-         */
+        // Check if the node has a left child and if it is a leaf node (no left or right children)
         if(node.left != null && node.left.left == null && node.left.right == null) {
+            // Return the value of the left leaf node plus the sum of left leaves in the right subtree
             return node.left.val + SumLeft(node.right);
         }
-        // add the values of the left and the right nodes
+        
+        // Recursive step: sum of left leaves in the left subtree + sum of left leaves in the right subtree
         return SumLeft(node.left) + SumLeft(node.right);
     }
 }
