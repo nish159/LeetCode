@@ -29,32 +29,38 @@ The number of nodes in the tree is in the range [0, 105].
  *     }
  * }
  */
+
 public class Solution {
     public int MinDepth(TreeNode root) {
+        // Call the private helper method MinDepthP to calculate the minimum depth
         return MinDepthP(root);
     }
     
+    // Private helper method to calculate the minimum depth of the binary tree
     private int MinDepthP(TreeNode node) {
+        // Base case: if the node is null, return 0 (depth is 0)
         if(node == null){
             return 0;
         }
         
-        // if the leaf nodes in the subtree are null
+        // If the node is a leaf node (both left and right children are null), depth is 1
         if(node.left == null && node.right == null){
-            // the count is 1
             return 1;
         }
+        // If the left child is null, calculate the depth of the right subtree and add 1
         else if(node.left == null){
-            // when going up the tree you have to add each one from before
             return MinDepthP(node.right) + 1;
         }
+        // If the right child is null, calculate the depth of the left subtree and add 1
         else if(node.right == null){
             return MinDepthP(node.left) + 1;
         }
         
+        // Calculate the depth of the left and right subtrees recursively
         int depthLeft = MinDepthP(node.left);
         int depthRight = MinDepthP(node.right);
         
+        // Calculate the minimum depth by taking the minimum of left and right subtree depths, then add 1 for the current node
         var min = Math.Min(depthLeft, depthRight);
         return min + 1;
     }
