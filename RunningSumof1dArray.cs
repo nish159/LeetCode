@@ -23,14 +23,20 @@ Constraints:
 
 public class Solution {
     public int[] RunningSum(int[] nums) {
+        // Create an array to store the running sum of the input array
         int[] runningSum = new int[nums.Length];
         
-        int sum = 0;
+        int sum = 0; // Initialize a variable to keep track of the running sum
         
+        // Iterate through the input array to calculate the running sum
         for(int i = 0; i < nums.Length; i++) {
+            // Update the running sum by adding the current element
             sum = sum + nums[i];
+            
+            // Store the running sum in the corresponding index of the runningSum array
             runningSum[i] = sum;
         }
-        return runningSum;
+        
+        return runningSum; // Return the array containing the running sum
     }
 }
