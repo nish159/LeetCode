@@ -23,6 +23,7 @@ nums contains distinct values sorted in ascending order
 -10^4 <= target <= 10^4
 */
 
+
 public class Solution {
     public int SearchInsert(int[] nums, int target) {
         // store our index
