@@ -32,27 +32,36 @@ The number of nodes in the tree is in the range [1, 104].
  */
 
 public class Solution {
-    // max length is 0
+    // Initialize maxDiameter to 0
     int maxDiameter = 0;
     
     public int DiameterOfBinaryTree(TreeNode root) {
+        // Call the private helper method to calculate the diameter
         Diameter(root);
+        // Return the maximum diameter found
         return maxDiameter;
     }
     
     private int Diameter(TreeNode node){
+        // Base case: if the node is null, return 0
         if(node == null){
             return 0;
         }
         
+        // Calculate the left subtree depth recursively
         int leftDepth = Diameter(node.left);
+        // Calculate the right subtree depth recursively
         int rightDepth = Diameter(node.right);
-        // checking if the diameter of the subtree with the current node as the root is greater than the max diameter previously found
+        
+        // Calculate the current diameter (sum of left and right subtree depths)
         int currentDiameter = leftDepth + rightDepth;
+        // Update maxDiameter if the current diameter is greater
         if(currentDiameter > maxDiameter) {
             maxDiameter = currentDiameter;
         }
         
+        // Return the depth of the current subtree (1 + max of left and right subtree depths)
         return 1 + Math.Max(leftDepth, rightDepth);
     }
 }
+
