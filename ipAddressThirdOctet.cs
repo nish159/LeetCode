@@ -1,47 +1,49 @@
 // Return the third octet and group the IP address  
 
-string[] ipaddress = { "192.168.1.2", "192.168.2.1", "192.168.1.1" };
+string[] ipAddresses = { "192.168.1.2", "192.168.2.1", "192.168.1.1" };
 
-SortIp(ipaddressAray);
+// Call the SortIp method to sort IP addresses based on the third octet
+Dictionary<string, List<string>> sortedIPs = SortIp(ipAddresses);
 
-Dictionary<string, List<string>> SortIp(string[] ipaddressArray) 
+// Method to sort IP addresses based on the third octet
+Dictionary<string, List<string>> SortIp(string[] ipAddressArray)
 {
-// create a map/dictionary to store the values
+    // Create a dictionary to store IP addresses grouped by their third octet
     Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
     
-    // loop through the array
-    for (int i = 0; i < ipaddressArray.Length; i++)
+    // Loop through the IP address array
+    for (int i = 0; i < ipAddressArray.Length; i++)
     {
-        // look for the third octet and store value
-        var thirdOctet = GetThirdOctet(ipaddressArray[i]);
-        // var thirdOctet = ipaddressArray[i].Split('.')[2];
+        // Get the third octet of the current IP address
+        string thirdOctet = GetThirdOctet(ipAddressArray[i]);
         
-        // "1" => ["192.168.1.1", "192.168.1.2"]
-        // "2" => ["192.168.2.1"]
-        
-        // if dictionary already contains third octet add ip address value otherwise
-        // create a new array and store the new key and value
+        // Check if the dictionary already contains the third octet as a key
         if (dictionary.ContainsKey(thirdOctet))
         {
-            dictionary[thirdOctet].Add(ipaddressArray[i]);
+            // Add the current IP address to the list of IP addresses for this third octet
+            dictionary[thirdOctet].Add(ipAddressArray[i]);
         }
         else
         {
-        // create a new list to store new key values
-            List<string> newArr = new List<string>();
-            newArr.Add(ipaddressArray[i]);
+            // Create a new list to store IP addresses for this third octet
+            List<string> newList = new List<string>();
+            newList.Add(ipAddressArray[i]);
             
-            // add the key, value pairs
-            dictionary.Add(thirdOctet, newArr);
+            // Add the new key-value pair to the dictionary
+            dictionary.Add(thirdOctet, newList);
         }
     }
+    
+    // Return the sorted dictionary
     return dictionary;
 }
 
-// helper function
-string GetThirdOctet(string ipaddress)
+// Helper function to extract the third octet from an IP address
+string GetThirdOctet(string ipAddress)
 {
-    string[] octets = ipaddress.Split('.');
-    // {"192", "168", "1", "2"};
+    // Split the IP address into octets based on the dot separator
+    string[] octets = ipAddress.Split('.');
+    
+    // Return the third octet (index 2 in the array)
     return octets[2];
 }
